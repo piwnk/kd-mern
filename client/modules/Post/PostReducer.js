@@ -1,4 +1,4 @@
-import { ADD_POST, ADD_POSTS, DELETE_POST, EDIT_POST } from './PostActions';
+import { ADD_POST, ADD_POSTS, DELETE_POST, EDIT_POST, VOTE_UP, VOTE_DOWN } from './PostActions';
 
 // Initial State
 const initialState = { data: [] };
@@ -27,6 +27,30 @@ const PostReducer = (state = initialState, action) => {
     case DELETE_POST :
       return {
         data: state.data.filter(post => post.cuid !== action.cuid),
+      };
+
+    case VOTE_UP:
+      return {
+        data: state.data.map(post => (
+              post.cuid !== action.cuid
+                ? post
+                : {
+                  ...post,
+                  votes: post.votes + 1,
+                }
+            )),
+      };
+
+    case VOTE_DOWN:
+      return {
+        data: state.data.map(post => (
+              post.cuid !== action.cuid
+                ? post
+                : {
+                  ...post,
+                  votes: post.votes - 1,
+                }
+            )),
       };
 
     default:

@@ -5,6 +5,8 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 export const EDIT_POST = 'EDIT_POST';
+export const VOTE_UP = 'VOTE_UP';
+export const VOTE_DOWN = 'VOTE_DOWN';
 
 // Export Actions
 export function addPost(post) {
@@ -79,3 +81,24 @@ export function editPostRequest(cuid, post) {
     }).then(() => dispatch(editPost(cuid, post)));
   };
 }
+
+export const voteUp = (cuid, post) => ({
+  type: VOTE_UP,
+  cuid,
+  post,
+});
+
+export const voteUpRequest = (post) => {
+  return (dispatch) => (
+    callApi(`posts/${post.cuid}`, 'put', {
+      ...post,
+      // votes: post.votes + 1,
+    }
+  ).then(() => dispatch(voteUp(post)))
+);
+};
+
+export const voteDown = cuid => ({
+  type: VOTE_DOWN,
+  cuid,
+});
