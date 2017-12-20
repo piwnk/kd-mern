@@ -61,8 +61,7 @@ export class PostDetailPage extends Component {
     // const { props } = this;
     return (
       <div>
-        {/* <Helmet title={this.props.post.title} /> */}
-        <Helmet title="Some title" />
+        <Helmet title={this.props.post.title} />
         <a className={styles['edit-post-button']} href="#" onClick={this.props.toggleEditPost}><FormattedMessage id="editPost" /></a>
         {
           this.props.showEditPost
