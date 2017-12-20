@@ -13,9 +13,11 @@ const PostReducer = (state = initialState, action) => {
     case EDIT_POST:
       return {
         data: state.data.map(post => (
-          post.cuid !== action.cuid ? post : {
-            ...post,
-            ...action.post }
+          post.cuid !== action.cuid
+            ? post
+            : {
+              ...post,
+              ...action.post }
         )),
       };
 

@@ -7,7 +7,7 @@ import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
 
 // Import Actions
-import { addPostRequest, fetchPosts, deletePostRequest, voteUp, voteDown } from '../../PostActions';
+import { addPostRequest, fetchPosts, deletePostRequest, voteUpRequest, voteDown } from '../../PostActions';
 import { toggleAddPost } from '../../../App/AppActions';
 
 // Import Selectors
@@ -31,7 +31,7 @@ class PostListPage extends Component {
   };
 
   handleVoteUp = post => {
-    this.props.dispatch(voteUp(post));
+    this.props.dispatch(voteUpRequest(post.cuid, post));
   }
 
   handleVoteDown = post => {

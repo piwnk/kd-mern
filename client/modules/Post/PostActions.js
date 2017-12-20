@@ -88,13 +88,13 @@ export const voteUp = (cuid, post) => ({
   post,
 });
 
-export const voteUpRequest = (post) => {
+export const voteUpRequest = (cuid, post) => {
   return (dispatch) => (
-    callApi(`posts/${post.cuid}`, 'put', {
+    callApi(`posts/${cuid}`, 'put', {
       ...post,
-      // votes: post.votes + 1,
+      votes: post.votes + 1,
     }
-  ).then(() => dispatch(voteUp(post)))
+  ).then(() => dispatch(voteUp(cuid, post)))
 );
 };
 
