@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
+import Nav from '../Nav';
+
 // Import Style
 import styles from './Header.css';
 
@@ -14,6 +16,7 @@ export function Header(props, context) {
   return (
     <div className={styles.header}>
       <div className={styles['language-switcher']}>
+        <Nav />
         <ul>
           <li><FormattedMessage id="switchLanguage" /></li>
           {languageNodes}
@@ -24,7 +27,7 @@ export function Header(props, context) {
           <Link to="/" ><FormattedMessage id="siteTitle" /></Link>
         </h1>
         {
-          context.router.isActive('/', true)
+          context.router.isActive('/posts', true)
             ? <a className={styles['add-post-button']} href="#" onClick={props.toggleAddPost}><FormattedMessage id="addPost" /></a>
             : null
         }

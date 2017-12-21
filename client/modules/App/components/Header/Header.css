@@ -35,21 +35,33 @@
 
 .language-switcher {
   background: rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between
 }
 
 .language-switcher ul {
   list-style: none;
-  width: 980px;
-  margin: auto;
+  /* width: 50%; */
+  /* margin: auto; */
   text-align: right;
+
 }
 
-.language-switcher li {
+.language-switcher ul:first-child {
+  text-align: left;
+}
+
+.language-switcher li,
+.language-switcher a {
   display: inline-block;
-  margin: 10px;
+  margin: 0 10px;
   padding: 5px;
   cursor: pointer;
   color: #fff;
+  text-decoration: none;
+  height: 100%;
+  line-height: 100%;
 }
 
 .language-switcher li:first-child {
