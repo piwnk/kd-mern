@@ -71,6 +71,10 @@ textarea {
   align-items: center;
 }
 
+.single-post p {
+  margin: 0;
+}
+
 .post-title{
   font-size: 28px;
   margin-bottom: 16px;
