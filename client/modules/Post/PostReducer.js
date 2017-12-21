@@ -34,7 +34,7 @@ const PostReducer = (state = initialState, action) => {
     case VOTE_UP:
       return {
         data: state.data.map(post => (
-              post.cuid !== action.cuid
+              post.cuid !== action.post.cuid
                 ? post
                 : {
                   ...post,
@@ -46,7 +46,7 @@ const PostReducer = (state = initialState, action) => {
     case VOTE_DOWN:
       return {
         data: state.data.map(post => (
-              post.cuid !== action.cuid
+              post.cuid !== action.post.cuid
                 ? post
                 : {
                   ...post,

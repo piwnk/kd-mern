@@ -58,7 +58,8 @@ export function deletePost(cuid) {
 
 export function deletePostRequest(cuid) {
   return (dispatch) => {
-    return callApi(`posts/${cuid}`, 'delete').then(() => dispatch(deletePost(cuid)));
+    return callApi(`posts/${cuid}`, 'delete')
+    .then(() => dispatch(deletePost(cuid)));
   };
 }
 
@@ -82,23 +83,34 @@ export function editPostRequest(cuid, post) {
   };
 }
 
-export const voteUp = (cuid, post) => ({
+export const voteUp = (post) => ({
   type: VOTE_UP,
-  cuid,
   post,
 });
 
-export const voteUpRequest = (cuid, post) => {
-  return (dispatch) => (
-    callApi(`posts/${cuid}`, 'put', {
-      ...post,
-      votes: post.votes + 1,
-    }
-  ).then(() => dispatch(voteUp(cuid, post)))
-);
+export const voteUpRequest = (post) => {
+  return dispatch => callApi(
+    `posts/${post.cuid}`,
+    'put', {
+      post: {
+        votes: post.votes + 1,
+      },
+    })
+    .then(() => dispatch(voteUp(post)));
 };
 
-export const voteDown = cuid => ({
+export const voteDown = (post) => ({
   type: VOTE_DOWN,
-  cuid,
+  post,
 });
+
+export const voteDownRequest = (post) => {
+  return (dispatch) => (
+    callApi(`posts/${post.cuid}`, 'put', {
+      post: {
+        votes: post.votes - 1,
+      },
+    })
+    .then(() => dispatch(voteDown(post)))
+  );
+};

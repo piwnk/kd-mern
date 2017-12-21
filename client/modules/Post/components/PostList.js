@@ -13,8 +13,8 @@ function PostList(props) {
             post={post}
             key={post.cuid}
             onDelete={() => props.handleDeletePost(post.cuid)}
-            onVoteUp={() => props.handleVoteUp(post.cuid)}
-            onVoteDown={() => props.handleVoteDown(post.cuid)}
+            onVoteUp={() => props.handleVoteUp(post)}
+            onVoteDown={() => props.handleVoteDown(post)}
           />
         ))
       }
